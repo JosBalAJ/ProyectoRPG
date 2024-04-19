@@ -11,6 +11,7 @@ using namespace std;
 
 class Character {
 protected:
+    //Cambio de String a Char
     char name[100];
     int health;
     int attack;
