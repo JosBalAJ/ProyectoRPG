@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Player::Player(string _name, int _health, int _attack, int _defense, int _speed) : Character(_name, _health, _attack, _defense, _speed, true) {
+Player::Player(const char* _name, int _health, int _attack, int _defense, int _speed) : Character(_name, _health, _attack, _defense, _speed, true) {
     level = 1;
     experience = 0;
 }
@@ -94,6 +94,7 @@ Action Player::takeAction(vector<Enemy*> enemies) {
             target = selectTarget(enemies);
             currentAction.target = target;
             currentAction.action = [this, target](){
+                endDefend(); // La defensa se restablece cuando se va a hacer un ataque
                 doAttack(target);
             };
             currentAction.speed = getSpeed();
@@ -102,21 +103,24 @@ Action Player::takeAction(vector<Enemy*> enemies) {
             isDefending = true;
             currentAction.target = nullptr;
             currentAction.action = [this](){
+                endDefend(); //Ahora la defensa se reinicia cada turno, no se acumula
                 defend();
             };
             currentAction.speed = getSpeed();
             break;
         case 3:
             cout << "Select an item to use:" << endl;
-            cout << "1. Sacrifice a Black Goat (Double damage once)" << endl;
+            cout << "1. Sacrifice a Black Goat (Double damage once)" << endl; // La funcionalidad que añadí ahora ya está bien, hace doble daño una vez, solo que después se detiene la ejecución y no sé por qué
             // Agregar opciones
             int selectedItem;
             cin >> selectedItem;
             if (selectedItem == 1){
                 useItem(1);
+                target = selectTarget(enemies);
                 currentAction.action = [this, target](){
                     doAttackWithDoubleDamage(target);
                 };
+                currentAction.speed = getSpeed();
             }// else{}
             break;
         default:
