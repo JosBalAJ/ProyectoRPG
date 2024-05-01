@@ -19,8 +19,7 @@ private:
 
     void levelUp();
 public:
-    //Cambio de string a Char de nuevo
-    Player(const char* _name, int _health, int _attack, int _defense, int _speed);
+    Player(string _name, int _health, int _attack, int _defense, int _speed);
 
     virtual void doAttack(Character *target) override;
     void doAttackWithDoubleDamage(Character *target);

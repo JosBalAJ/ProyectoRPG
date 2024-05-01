@@ -14,7 +14,6 @@ protected:
     //Cambio de String a Char
     char name[100];
     int health;
-    int maxHealth; //Agregamos la salud máxima
     int attack;
     int defense;
     int speed;
@@ -37,7 +36,6 @@ public:
     bool flee(Character* target);
     const char* getName() const;
     int getHealth();
-    int getMaxHealth() const {return maxHealth; }
     int getAttack();
     int getDefense();
     bool getIsPlayer();

@@ -10,7 +10,7 @@
 using namespace std;
 using namespace combat_utils;
 
-Enemy::Enemy(const char* _name, int _health, int _attack, int _defense, int _speed, int _experience) : Character(_name, _health, _attack, _defense, _speed, false) {
+Enemy::Enemy(string _name, int _health, int _attack, int _defense, int _speed, int _experience) : Character(_name, _health, _attack, _defense, _speed, false) {
     experience = _experience;
 }
 
@@ -19,23 +19,12 @@ void Enemy::doAttack(Character *target) {
 }
 
 void Enemy::takeDamage(int damage) {
-    if (health <= (0.20 * maxHealth)){ //Si el enemigo tiene 20% o menos de vida
-        int chance = rand() % 100;
-        if (chance < 40){              //Entonces existe un 40% de probabilidad de que se defienda
-            int trueDamage = damage - (defense * 1.2); // Su defensa será 20% Mayor
-            health-= trueDamage;
-            cout << name << " defended and only took " << trueDamage << " damage!" << endl;
-            if(health <= 0) {
-                cout << name << " has been defeated!" << endl;
-            }
-        }
-    }else{
-        int trueDamage = damage - defense;
-        health-= trueDamage;
-        cout << name << " took " << trueDamage << " damage!" << endl;
-        if(health <= 0) {
-            cout << name << " has been defeated!" << endl;
-        }
+    int trueDamage = damage - defense;
+    health-= trueDamage;
+
+    cout << name << " took " << trueDamage << " damage!" << endl;
+    if(health <= 0) {
+        cout << name << " has been defeated!" << endl;
     }
 }
 

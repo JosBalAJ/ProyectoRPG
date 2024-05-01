@@ -6,10 +6,8 @@
 Character::Character(const char* _name, int _health, int _attack, int _defense, int _speed, bool _isPlayer) {
     strcpy(name, _name);
     health = _health;
-    maxHealth = _health;
     attack = _attack;
     defense = _defense;
-    originalDefense = _defense;
     speed = _speed;
     isPlayer = _isPlayer;
     usingItem = false;
@@ -55,6 +53,7 @@ bool Character::flee(Character*target) {
 }
 
 void Character::defend() {
+    originalDefense = defense;
     defense = static_cast<int>(defense * 1.2);
     isDefending = true;
 }

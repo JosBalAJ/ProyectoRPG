@@ -17,8 +17,7 @@ class Enemy: public Character{
 private:
     int experience;
 public:
-    // Cambio de String a Char de nuevo
-    Enemy(const char* _name, int _health, int _attack, int _defense, int _speed, int _experience);
+    Enemy(string _name, int _health, int _attack, int _defense, int _speed, int _experience);
     void doAttack(Character *target) override;
     void takeDamage(int damage) override;
     Character* selectTarget(vector<Player*> possibleTargets);
