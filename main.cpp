@@ -2,9 +2,12 @@
 #include "Player/Player.h"
 #include "Enemy/Enemy.h"
 #include "Combat/Combat.h"
+#include <cstdlib>
+#include <ctime>
 
 
 int main() {
+    srand(time(nullptr));
     Player *player = new Player("JosBal", 100, 30, 8, 3);
     Enemy *enemy = new Enemy("Leshy", 200, 15, 5, 5, 10);
     Enemy *enemy2 = new Enemy("Grizzly", 40, 20, 0, 5, 10);
