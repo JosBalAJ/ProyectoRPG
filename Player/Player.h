@@ -29,7 +29,7 @@ public:
     Action takeAction(vector<Enemy*> enemies);
     bool isDefending = false;
 
-    void gainExperience(int exp);
+    void gainExperience(Enemy* enemy);
 
     //TODO: Implement use object
 };

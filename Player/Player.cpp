@@ -37,14 +37,22 @@ void Player::takeDamage(int damage) {
 }
 
 void Player::levelUp() {
-    level++;
+    cout << "YOU LEVELED UP! You are stronger!" << endl;
+    level++;                //Mejora de atributos
+    maxHealth += 10;        //Aumento de Salud Máxima
+    health = maxHealth;     //Restaura salud
+    attack += 3;            //Aumentar ataque, defensa y velocidad
+    defense += 3;
+    speed += 2;
 }
 
-void Player::gainExperience(int exp) {
-    experience += exp;
+void Player::gainExperience(Enemy* enemy) {
+    int experienceFromEnemy = enemy->getExperience();
+
+    experience += experienceFromEnemy;
     if (experience >= 100) {
         levelUp();
-        experience = 100-experience;
+        experience -= 100;
     }
 }
 
@@ -71,7 +79,10 @@ Character* Player::selectTarget(vector<Enemy*> possibleTargets) {
 Action Player::takeAction(vector<Enemy*> enemies) {
     int action = 0;
     while (true){
-        cout << "Select an action: " << endl
+        cout << "  - Your level: " << level << endl
+             << "  - Your XP: " << experience << endl
+             << "   * * * * *" << endl
+             << "Select an action: " << endl
              << "   1. Attack" << endl
              << "   2. Defend" << endl
              << "   3. Use Item" << endl;

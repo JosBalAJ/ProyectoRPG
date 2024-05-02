@@ -9,9 +9,9 @@
 int main() {
     srand(time(nullptr));
     Player *player = new Player("JosBal", 100, 30, 8, 3);
-    Enemy *enemy = new Enemy("Leshy", 200, 15, 5, 5, 10);
-    Enemy *enemy2 = new Enemy("Grizzly", 40, 20, 0, 5, 10);
-    Enemy *enemy3 = new Enemy("Elk", 50, 15, 15, 5, 10);
+    Enemy *enemy = new Enemy("Leshy", 50, 15, 5, 5, 85, player);
+    Enemy *enemy2 = new Enemy("Grizzly", 30, 20, 0, 5, 25, player);
+    Enemy *enemy3 = new Enemy("Elk", 20, 15, 15, 5, 35, player);
 
     vector<Character*> participants;
 
