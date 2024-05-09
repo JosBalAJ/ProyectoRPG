@@ -44,6 +44,11 @@ void Player::levelUp() {
     attack += 3;            //Aumentar ataque, defensa y velocidad
     defense += 3;
     speed += 2;
+
+    cout << "BUT WARNING!!! Your Enemies are also Stronger" << endl;
+    for (Enemy* enemy : enemies) {
+        enemy->levelUpEnemy();
+    }
 }
 
 void Player::gainExperience(Enemy* enemy) {
@@ -54,6 +59,10 @@ void Player::gainExperience(Enemy* enemy) {
         levelUp();
         experience -= 100;
     }
+}
+
+void Player::addEnemy(Enemy *enemy) {
+    enemies.push_back(enemy);
 }
 
 Character* Player::selectTarget(vector<Enemy*> possibleTargets) {

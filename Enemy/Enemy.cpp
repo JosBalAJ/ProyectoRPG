@@ -28,6 +28,10 @@ void Enemy::takeDamage(int damage) {
             cout << name << " defended and only took " << trueDamage << " damage!" << endl;
             if(health <= 0) {
                 cout << name << " has been defeated!" << endl;
+                if (player) {
+                    cout << name << " gave you " << experience << " of XP" << endl;
+                    player->gainExperience(this);
+                }
             }
         }
     }else{
@@ -46,6 +50,13 @@ void Enemy::takeDamage(int damage) {
 
 int Enemy::getExperience() {
     return experience;
+}
+
+void Enemy::levelUpEnemy() {
+    maxHealth += 3;     // La suma de las mejoras para los 3 enemigos son los mismos puntos que se dieron al jugador
+    attack += 1;
+    defense += 1;
+    speed += 1;
 }
 
 Character* Enemy::selectTarget(vector<Player*> possibleTargets) {

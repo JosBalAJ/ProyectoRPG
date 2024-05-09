@@ -15,6 +15,10 @@ int main() {
 
     vector<Character*> participants;
 
+    player->addEnemy(enemy);
+    player->addEnemy(enemy2);
+    player->addEnemy(enemy3);
+
     participants.push_back(player);
     participants.push_back(enemy);
     participants.push_back(enemy2);

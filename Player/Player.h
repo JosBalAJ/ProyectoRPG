@@ -18,6 +18,7 @@ private:
     int experience;
 
     void levelUp();
+    std::vector<Enemy*> enemies;
 public:
     //Cambio de string a Char de nuevo
     Player(const char* _name, int _health, int _attack, int _defense, int _speed);
@@ -30,6 +31,7 @@ public:
     bool isDefending = false;
 
     void gainExperience(Enemy* enemy);
+    void addEnemy(Enemy* enemy);
 
     //TODO: Implement use object
 };
