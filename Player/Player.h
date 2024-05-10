@@ -9,6 +9,7 @@
 #include "../Enemy/Enemy.h"
 #include "../Combat/Action.h"
 #include <vector>
+#include <fstream>
 
 class Enemy;
 
@@ -32,6 +33,16 @@ public:
 
     void gainExperience(Enemy* enemy);
     void addEnemy(Enemy* enemy);
+
+    void savePlayerToFile();
+
+    void setTheLevel(int lvl) { level = lvl; }
+    void setTheExperience(int xp) { experience = xp; }
+    void setTheHealth(int hp) { health = hp; }
+    void setTheMaxHealth(int maxHp) { maxHealth = maxHp; }
+    void setTheAttack(int atk) { attack = atk; }
+    void setTheDefense(int def) { defense = def; }
+    void setTheSpeed(int spd) { speed = spd; }
 
     //TODO: Implement use object
 };

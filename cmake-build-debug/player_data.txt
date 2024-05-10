@@ -1,0 +1,6 @@
+Level: 2
+Experience: 10
+Health: 110/110
+Attack: 33
+Defense: 11
+Speed: 5

@@ -51,6 +51,22 @@ void Player::levelUp() {
     }
 }
 
+void Player::savePlayerToFile() {
+    ofstream file("player_data.txt");
+    if (file.is_open()){
+        file << "Level: " << level << "\n"
+             << "Experience: " << experience << "\n"
+             << "Health: " << health << "/" << maxHealth << "\n"
+             << "Attack: " << attack << "\n"
+             << "Defense: " << defense << "\n"
+             << "Speed: " << speed << "\n";
+        file.close();
+        cout << "Player Data Saved..." << endl;
+    } else {
+        cout << "Something went wrong saving your data..." << endl;
+    }
+}
+
 void Player::gainExperience(Enemy* enemy) {
     int experienceFromEnemy = enemy->getExperience();
 
@@ -58,6 +74,7 @@ void Player::gainExperience(Enemy* enemy) {
     if (experience >= 100) {
         levelUp();
         experience -= 100;
+        savePlayerToFile();
     }
 }
 
